@@ -1,3 +1,24 @@
+/*
+Input:
+                  20
+                /    \
+              8       22
+            /   \    /   \
+          5      3 4     25
+                / \
+              10    14
+Output:
+LeftView:
+20 8 5 10
+RightView:
+20 22 25 14
+TopView:
+5 8 20 22 25
+BottomView Right Preference:
+5 10 4 14 25
+BottomView Left Preference:
+5 10 3 14 25
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -44,6 +65,7 @@ void rightView(node *root) {
 	queue<pair<node*, int> > q;
 	q.push(make_pair(root, 0));
 	int depth = -1;
+
 	while (!q.empty()) {
 		node *t = q.front().first;
 		int cur_lvl = q.front().second;
