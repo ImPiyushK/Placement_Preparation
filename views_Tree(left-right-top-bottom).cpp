@@ -140,16 +140,15 @@ void bottomViewL(node *root) {
 }
 
 int main() {
-	node *root = NULL;
-	root = newNode(10);
-	root->left = newNode(11);
-	root->right = newNode(12);
-	root->left->left = newNode(13);
-	root->left->right = newNode(14);
-	root->right->left = newNode(15);
-	root->right->right = newNode(16);
-	//root->left->left->left = newNode(18);
-	root->right->right->right = newNode(17);
+	node *root = newNode(20);
+	root->left = newNode(8);
+	root->right = newNode(22);
+	root->left->left = newNode(5);
+	root->left->right = newNode(3);
+	root->right->left = newNode(4);
+	root->right->right = newNode(25);
+	root->left->right->left = newNode(10);
+	root->left->right->right = newNode(14);
 
 	cout << "LeftView:\n";
 	leftView(root);
@@ -160,8 +159,14 @@ int main() {
 	cout << endl;
 
 	cout << "TopView:\n";
+	topView(root);
 	cout << endl;
 
-	cout << "BottomView:\n";
+	cout << "BottomView Right Preference:\n";
+	bottomViewR(root);
+	cout << endl;
+
+	cout << "BottomView Left Preference:\n";
+	bottomViewL(root);
 	cout << endl;
 }
