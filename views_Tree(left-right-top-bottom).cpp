@@ -38,6 +38,29 @@ void leftView(node *root) {
 	}
 }
 
+void rightView(node *root) {
+	if (root == NULL) return;
+
+	queue<pair<node*, int> > q;
+	q.push(make_pair(root, 0));
+	int depth = -1;
+	while (!q.empty()) {
+		node *t = q.front().first;
+		int cur_lvl = q.front().second;
+		q.pop();
+
+		if (cur_lvl > depth) {
+			cout << t->data << " ";
+			depth = cur_lvl;
+		}
+
+		if (t->right)
+			q.push(make_pair(t->right, cur_lvl + 1));
+		if (t->left)
+			q.push(make_pair(t->left, cur_lvl + 1));
+	}
+}
+
 int main() {
 	node *root = NULL;
 	root = newNode(10);
@@ -55,6 +78,7 @@ int main() {
 	cout << endl;
 
 	cout << "RightView:\n";
+	rightView(root);
 	cout << endl;
 
 	cout << "TopView:\n";
