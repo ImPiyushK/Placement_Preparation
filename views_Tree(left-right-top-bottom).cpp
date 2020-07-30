@@ -114,6 +114,30 @@ void bottomViewR(node *root) {
 		cout << i->second << " ";
 }
 
+void bottomViewL(node *root) {
+	if (!root) return;
+
+	map<int, int> m;
+	m[0] = root->data;
+
+	queue<pair<node*, int>> q;
+	q.push(make_pair(root, 0));
+
+	while (!q.empty()) {
+		node *t = q.front().first;
+		int hd = q.front().second;
+		q.pop();
+
+		m[hd] = t->data;
+
+		if (t->right)
+			q.push(make_pair(t->right, hd + 1));
+		if (t->left)
+			q.push(make_pair(t->left, hd - 1));
+	}
+	for (auto i = m.begin(); i != m.end(); ++i)
+		cout << i->second << " ";
+}
 
 int main() {
 	node *root = NULL;
