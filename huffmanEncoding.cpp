@@ -15,7 +15,6 @@ C 11
 */
 #include<bits/stdc++.h>
 using namespace std;
-
 struct node
 {
 	char c;
@@ -61,17 +60,11 @@ node* extractMin(node *minHeap[], int &n)
 
 void percolateUp(node* minHeap[], int i)
 {
-	while (i > 0)
+	int p = (i - 1) / 2;
+	if (minHeap[p]->f > minHeap[i]->f)
 	{
-		int p = (i - 1) / 2;
-		if (minHeap[p]->f > minHeap[i]->f)
-		{
-			swap(minHeap[p], minHeap[i]);
-			i = p;
-		}
-		else {
-			break;
-		}
+		swap(minHeap[p], minHeap[i]);
+		percolateUp(minHeap, p);
 	}
 }
 
